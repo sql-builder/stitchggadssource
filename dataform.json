@@ -1,0 +1,6 @@
+{
+    "warehouse": "snowflake",
+    "defaultDatabase": "database_name",
+    "defaultSchema": "schema_name",
+    "assertionSchema": "assertion_name"
+}
