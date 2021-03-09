@@ -1,6 +1,6 @@
 # Google-ads
 
-BETA package for transforming Google datasets managed by Segment, Stitch or Fivetran.
+BETA package for transforming Google datasets managed by Stitch.
 
 
 ## Configure the package
@@ -15,23 +15,22 @@ const google = require("google-ads");
 google({
     //
     // Define the database and schema of your Google data
-    googleDatabase: "raw",
-    googleSchema: "google_ads",
+    databaseName: "database_name",
+    schemaName: "schema_name",
     // Optional prefix metadata if applicable
     stagingTablePrefix: "stg_",
     // Define the destination schema and table/view
-    defaultConfig: {  
+    defaultConfig: {
         database: "database_name",
         schema: "schema_name",
         tags: ["google"],
-        type: "view"
+        type: "table"
     },
 });
 
 ```
 
 ## Supported warehouses:
-[TBD]
- - BigQuery
- - Snowflake
- - Redshift
+ - BigQuery [Tested]
+ - Snowflake [Untested]
+ - Redshift [Untested]

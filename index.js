@@ -1,56 +1,56 @@
-const googleAds = require("./includes/google_ads");
-const googleAdsets = require("./includes/google_ad_groups");
-const googleCampaigns = require("./includes/google_campaigns");
-const googleAdPerformance = require("./includes/google_ad_performance");
+const googleAds = require("./includes/stitch_google_ads");
+const googleAdsets = require("./includes/stitch_google_ad_groups");
+const googleCampaigns = require("./includes/stitch_google_campaigns");
+const googleAdPerformance = require("./includes/stitch_google_ad_performance");
 
 module.exports = (params) => {
 
     params = {
         // set defaults for parameters
-        googleDatabase: "raw",
-        googleSchema: "google_ads",
+        databaseName: "",
+        schemaName: "",
         tablePrefix: "",
         stagingTablePrefix: "",
         stagingSchema: "",
         ...params
     };
 
-    let ads, adsets, campaigns, adPerformance;
+    let stitchGoogleAds, stitchGoogleAdsets, stitchGoogleCampaigns, stitchGoogleAdPerformance;
 
-    ads = declare({
+    stitchGoogleAds = declare({
         ...params.defaultConfig,
-        database: params.googleDatabase,
-        schema: params.googleSchema,
+        database: params.databaseName,
+        schema: params.schemaName,
         name: "ads"
     });
 
-    adsets = declare({
+    stitchGoogleAdsets = declare({
         ...params.defaultConfig,
-        database: params.googleDatabase,
-        schema: params.googleSchema,
-        name: "adsets"
+        database: params.databaseName,
+        schema: params.schemaName,
+        name: "ad_groups"
     });
 
-    campaigns = declare({
+    stitchGoogleCampaigns = declare({
         ...params.defaultConfig,
-        database: params.googleDatabase,
-        schema: params.googleSchema,
+        database: params.databaseName,
+        schema: params.schemaName,
         name: "campaigns"
     });
 
-    adPerformance = declare({
+    stitchGoogleAdPerformance = declare({
         ...params.defaultConfig,
-        database: params.googleDatabase,
-        schema: params.googleSchema,
-        name: "ads_insights"
+        database: params.databaseName,
+        schema: params.schemaName,
+        name: "AD_PERFORMANCE_REPORT"
     });
 
     // Publish and return datasets.
     let result = {
-        ads: googleAds(params),
-        adsets: googleAdsets(params),
-        campaigns: googleCampaigns(params),
-        adPerformance: googleAdPerformance(params)
+        stitchGoogleAds: googleAds(params),
+        stitchGoogleAdsets: googleAdsets(params),
+        stitchGoogleCampaigns: googleCampaigns(params),
+        stitchGoogleAdPerformance: googleAdPerformance(params)
     };
 
     return result;
