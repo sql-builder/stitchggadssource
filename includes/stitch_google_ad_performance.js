@@ -9,10 +9,10 @@ module.exports = (params) => {
         ...params.defaultConfig
     }).query(ctx =>`
 with source as ( 
-${crossDB.filterStitch(ctx, params, tableName, `ad_id`)}
+${crossDB.filterStitch(ctx, params, tableName, `adid`)}
 )    
 SELECT
-    cast(ad_id as string) as ad_id,
+    cast(adid as string) as ad_id,
     day as ad_serve_ts,
     ${crossDB.safeDivide(`avgcost`, 1000000)} as ad_avg_cost,
     ${crossDB.castInt(null, global.dataform.projectConfig.warehouse)} as ad_total_frequency,
