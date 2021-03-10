@@ -5,12 +5,12 @@ BETA package for transforming Google datasets managed by Stitch.
 
 ## Configure the package
 
-Create a new JS file in your `definitions/` folder and create the Google-ads tables as in the following example.
+Create a new JS file in your `definitions/` folder and called `stitch_google_ads_source.js` create the Google-ads tables as in the following example.
 
 By default, the package will look for source data in the `google_ads` schema in the `raw` database. Please set the source database and schema as required.
 
 ```js
-const google = require("google-ads");
+const google = require("stitch-google-ads-source");
 
 google({
     //
@@ -28,6 +28,16 @@ google({
     },
 });
 
+```
+
+And in your package.json file add a line for Google ads source:
+```json
+{
+    "dependencies": {
+        "@dataform/core": "x.xx.x",
+        "stitch-google-ads-source": "git+https://github.com/sql-builder/stitch-google-ads-source.git"
+    }
+}
 ```
 
 ## Supported warehouses:
